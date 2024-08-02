@@ -24,14 +24,16 @@ Unnamed columns which are removed during preprocessing.
 Installation
 To get started with this project, follow these steps:
 
-Clone the repository:
 
+
+Clone the repository:
 sh
 Copy code
-git clone https://github.com/yourusername/spam-detection.git
+git clone https://github.com/NavalEP/Spam-Emails.git
 cd spam-detection
-Install the required packages:
 
+
+Install the required packages:
 sh
 Copy code
 pip install -r requirements.txt
@@ -42,17 +44,22 @@ python
 Copy code
 import pandas as pd
 
+
 df = pd.read_csv('path/to/spam.csv', encoding='latin1')
 df.drop(columns=['Unnamed: 2', 'Unnamed: 3', 'Unnamed: 4'], inplace=True)
 df.rename(columns={'v1': 'output', 'v2': 'sms/email'}, inplace=True)
 df['output'] = df['output'].map({'ham': 0, 'spam': 1})
 Text Processing
+
+
 Define a function to preprocess the text:
 python
 Copy code
 import nltk
 from nltk.corpus import stopwords
 from nltk.stem.porter import PorterStemmer
+
+
 import string
 
 def process_txt(txt):
@@ -66,6 +73,8 @@ def process_txt(txt):
 
 df['text_transform'] = df['sms/email'].apply(process_txt)
 Feature Extraction
+
+
 Extract features using TF-IDF:
 python
 Copy code
